@@ -16,3 +16,5 @@ const server = express();
 server.get('/', (req, res) => {
     res.send(<h1>SERVER IS LIVE</h1>)
 })
+
+module.exports = server;
