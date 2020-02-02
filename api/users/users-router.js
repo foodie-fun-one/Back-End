@@ -51,25 +51,17 @@ router.get("/user/:id", verifyToken, (req, res) => {
 // CREATE A NEW USER
 
 router.post("/user/register", (req, res) => {
-  const credentials = req.body;
-  const hash = bc.hashSync(credentials.password, 12);
-  credentials.password = hash;
-
-  userModel.add(credentials)
-  .then(user => {
-    const token = generateToken(req.body);
-    res.status(201).json({
-        username: req.body.username,
-        id: req.req_id,
-        email: req.body.email,
-        token: token
-      });
-  })
-  .catch(error => {
-      res.status(500).json({
-        serverError: `There was an error.`
+    let user = req.body;
+    const hash = bcrypt.hashSync(user.password, 10); 
+    user.password = hash;
+  
+    userModel.add(user)
+      .then(user => {
+        res.status(201).json(user);
       })
-  })
-});
+      .catch(error => {
+        res.status(500).json(error);
+      });
+  });
 
 module.exports = router;
