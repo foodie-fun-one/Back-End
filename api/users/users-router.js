@@ -1,29 +1,72 @@
-const router = require('express').Router();
-const knex = require('knex');
-const config = require('../../knexfile');
-const db = knex(config.development);
-const restricted = require('../../auth/auth-restricted');
-const model = require('./users-model');
+const express = require("express").Router();
+const bc = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const userModel = require("./users-model");
+const validate = require("../../data/helpers/middleware/validate");
+const generateToken = require("../../data/helpers/middleware/generateToken");
+const verifyToken = require("../../data/helpers/middleware/verifyToken");
+router.use(express.json());
 
-// GET REQUEST
+// GET ALL USERS / MUST VERIFY TOKEN
 
-router.get('/:id', (req, res) => {
-    const { id } = req.params;
-    model.findById(id)
-    .then(user => {
-        if (user) {
-            res.json(user)
-        } else {
-            res.status(404).json({
-                errorMessage: `Could not find user with given ID.`
-            })
-        }
+router.get("/", verifyToken, (req, res) => {
+  userModel
+    .find()
+    .then(users => {
+      res.status(200).json(users);
     })
     .catch(error => {
-        res.status(500).json({
-            errorMessage: `Failed to get user.`
-        })
+      res.status(500).json({
+        serverError: `There was an error.`
+      });
+    });
+});
+
+// GET USERS BY ID
+
+router.get("/:id", verifyToken, (req, res) => {
+  const { id } = req.params;
+
+  userModel
+    .findById(id)
+    .then(user => {
+      if (user) {
+        res.status(200).json(user);
+      } else {
+        res.status(404).json({
+          errorMessage: `Could not find user with given ID.`
+        });
+      }
     })
-})
+    .catch(error => {
+      res.status(500).json({
+        serverError: `There was an error.`
+      });
+    });
+});
 
+// CREATE A NEW USER
 
+router.post("/register", (req, res) => {
+  const credentials = req.body;
+  const hash = bc.hashSync(credentials.password, 12);
+  credentials.password = hash;
+
+  userModel.add(credentials)
+  .then(user => {
+    const token = generateToken(req.body);
+    res.status(201).json({
+        username: req.body.username,
+        id: req.req_id,
+        email: req.body.email,
+        token: token
+      });
+  })
+  .catch(error => {
+      res.status(500).json({
+        serverError: `There was an error.`
+      })
+  })
+});
+
+module.exports = router;

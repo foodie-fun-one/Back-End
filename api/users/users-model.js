@@ -1,13 +1,28 @@
 const db = require('../../data/dbConfig'); // dbconfig connects with knexfile
 
 module.exports = {
-    add,
     find,
-    findBy,
     findById,
+    findByUsername,
+    add,
     update,
-    remove
+    remove,
 }
+
+function find() {
+    return db('users');
+}
+
+function findById(id) {
+    return db('users')
+    .where({ id }).first();
+}
+
+function findByUsername(username) {
+    return db('users')
+    .where({ username }).first();
+}
+
 
 // add user to the database
 async function add(user) {
@@ -15,40 +30,16 @@ async function add(user) {
     return findById(id)
 }
 
-// select all users in the DB
-function find() {
-    return db('users').select('*');
-}
-
-// find username by username which returns everything about specific user
-function findBy(username) {
-    return (
-        db('users')
-        .where(username)
-        .first()
-        .select('*')
-    )
-}
-
-// find username by ID which returns everything about specific user
-function findById(id) {
-    return (
-        db('users')
-        .where({id})
-        .first()
-        .select('*')
-    )
-}
-
-// updates users information
-function update(username, changes) {
+function update(changes, id) {
     return db('users')
-    .where({ username })
-    .update(changes, '*')
+    .where({ id })
+    .update(changes);
 }
 
-function remove(username) {
+function remove(id) {
     return db('users')
-    .where({ username })
+    .where({ id })
     .del();
 }
+
+
