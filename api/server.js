@@ -10,6 +10,7 @@ const server = express();
 // importing routers here
 
 // importing middleware here
+server.use(helmet(), cors(), express.json());
 
 // middleware server.use here
 
