@@ -15,7 +15,7 @@ server.use(helmet(), cors(), express.json());
 // middleware server.use here
 
 server.get('/', (req, res) => {
-    res.send(<h1>SERVER IS LIVE</h1>)
-})
+    res.send(`WE ARE UP AND RUNNING!!`)
+});
 
 module.exports = server;
