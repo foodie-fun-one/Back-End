@@ -1,23 +1,22 @@
 require('dotenv').config()
 
-const localPg = {
-  host: 'localhost',
+
+const herokuPg = {
+  host: 'ec2-23-21-91-183.compute-1.amazonaws.com',
   port: 5432,
-  user: 'foodiefun_admin',
-  password: 'foodieisfun',
-  database: 'foodiefun'
+  user: 'ejcaginugkqqxs',
+  password: 'ef4eb21962b87a90a428d301dee909f311b8573b99a78eebcbcdd3409e8ecbb5',
+  database: 'desot3npcl6man',
+  ssl: true
 };
 
-const pgUser = process.env.PG_USER || `postgres`;
-const pgDB = process.env.PG_DB || 'foodiefun';
-
-const prodConnection = `postgres://${pgUser}localhost/${pgDB}`;
+const prodConnection = `postgres://ejcaginugkqqxs:ef4eb21962b87a90a428d301dee909f311b8573b99a78eebcbcdd3409e8ecbb5@ec2-23-21-91-183.compute-1.amazonaws.com:5432/desot3npcl6man`;
 
 
 module.exports = {
     development: {
       client: 'pg',
-      connection: localPg,
+      connection: herokuPg,
       migrations: {
         directory: './data/migrations'
       },
@@ -29,7 +28,7 @@ module.exports = {
   
     test: {
       client: 'pg',
-      connection: localPg,
+      connection: herokuPg,
       migrations: {
         directory: './data/migrations'
       },
