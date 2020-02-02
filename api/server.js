@@ -2,7 +2,7 @@
 
 const express = require('express');
 const helmet = require('helmet');
-const cors = require('cros');
+const cors = require('cors');
 
 // creating express server
 const server = express();
