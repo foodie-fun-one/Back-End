@@ -19,7 +19,7 @@ server.use(helmet(), cors(), express.json());
 
 // middleware server.use here
 
-server.get('/', (req, res) => {
+server.get('/welcome', (req, res) => {
     res.send(`Server is LIVE and working.`)
 });
 
