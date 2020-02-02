@@ -50,7 +50,6 @@ router.get("/user/:id", verifyToken, (req, res) => {
 // CREATE A NEW USER
 
 router.post('/user/register', (req, res) => {
-  res.sendFile('../.././index.js')
   const credentials = req.body;
     const hash = bc.hashSync(credentials.password, 14);
     credentials.password = hash
