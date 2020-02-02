@@ -7,7 +7,7 @@ const cors = require('cors');
 const server = express();
 
 // importing routers here
-const userRouter = require('../api/users/users-router');
+const userRouter = require('./api/users/users-router');
 
 // server routing
 
