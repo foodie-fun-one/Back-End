@@ -6,6 +6,7 @@ const cors = require('cors');
 // creating express server
 const server = express();
 
+
 // importing routers here
 const userRouter = require('./users/users-router');
 
@@ -19,7 +20,7 @@ server.use(helmet(), cors(), express.json());
 
 // middleware server.use here
 
-server.get('/welcome', (req, res) => {
+server.get('/', (req, res) => {
     res.send(`Server is LIVE and working.`)
 });
 
