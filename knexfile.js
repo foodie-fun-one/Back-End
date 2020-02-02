@@ -30,11 +30,11 @@ module.exports = {
     production: {
       client: 'pg',
       connection: {
-        host: POSTGRES_PROD_HOST,
-        port: POSTGRES_PROD_PORT,
-        user: POSTGRES_PROD_USER,
-        password: POSTGRES_PROD_PASSWORD,
-        database: POSTGRES_PROD_DATABASE,
+        host: 'ec2-23-21-91-183.compute-1.amazonaws.com',
+        port: 5432,
+        user: 'ejcaginugkqqxs',
+        password: 'ef4eb21962b87a90a428d301dee909f311b8573b99a78eebcbcdd3409e8ecbb5',
+        database: 'desot3npcl6man',
         ssl: true
       },
       migrations: {
