@@ -2,7 +2,7 @@ const express = require("express");
 const bc = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const userModel = require("./users-model");
-const validate = require("../../data/helpers/middleware/validate");
+const {validate, validateUser} = require("../../data/helpers/middleware/validate");
 const generateToken = require("../../data/helpers/middleware/generateToken");
 const verifyToken = require("../../data/helpers/middleware/verifyToken");
 
@@ -50,21 +50,29 @@ router.get("/user/:id", verifyToken, (req, res) => {
 // CREATE A NEW USER
 
 router.post('/user/register', (req, res) => {
-  const credentials = req.body;
-    const hash = bc.hashSync(credentials.password, 14);
-    credentials.password = hash
-  userModel.add(credentials)
-  .then(user => {
-    console.log(user[0])
-    const token = generateToken(req.body)
-    res.status(201).json({username: req.body.username, 
-      id: req.req_id,
-      email: req.body.email,
-      token: token});
-  })
-  .catch (err => {
-    res.status(500).json({  serverError: `There was an error.`, err });
-    });
+  // implement registration
+  let user = req.body;
+  // validate the data before sending it to the database!
+  const validateResult = validateUser(user);
+
+  if (validateResult.isSuccessfull === true) {
+    const hash = bc.hashSync(user.password, 12);
+    user.password = hash;
+
+    userModel.add(user) 
+    .then(saved => {
+      res.status(201).json(saved);
+    })
+    .catch(error => {
+      res.status(500).json(error)
+    })
+
+  } else {
+    res.status(400).json({
+      errorMsg: `Invalid username or password.`,
+      errors: validateResult.errors
+    })
+  }
 });
 
 module.exports = router;
