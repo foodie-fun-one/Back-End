@@ -4,6 +4,7 @@ module.exports = {
     development: {
       client: 'pg',
       connection: process.env.DATABASE_URL,
+      ssl: true,
       migrations: {
         directory: './data/migrations'
       },
@@ -16,6 +17,7 @@ module.exports = {
     test: {
       client: 'pg',
       connection: process.env.DATABASE_URL,
+      ssl: true,
       migrations: {
         directory: './data/migrations'
       },
@@ -27,7 +29,14 @@ module.exports = {
   
     production: {
       client: 'pg',
-      connection: process.env.DATABASE_URL,
+      connection: {
+        host: POSTGRES_PROD_HOST,
+        port: POSTGRES_PROD_PORT,
+        user: POSTGRES_PROD_USER,
+        password: POSTGRES_PROD_PASSWORD,
+        database: POSTGRES_PROD_DATABASE,
+        ssl: true
+      },
       migrations: {
         directory: './data/migrations'
       },
