@@ -1,10 +1,13 @@
-const express = require("express").Router();
+const express = require("express");
 const bc = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const userModel = require("./users-model");
 const validate = require("../../data/helpers/middleware/validate");
 const generateToken = require("../../data/helpers/middleware/generateToken");
 const verifyToken = require("../../data/helpers/middleware/verifyToken");
+
+const router = express.Router();
+
 router.use(express.json());
 
 // GET ALL USERS / MUST VERIFY TOKEN
