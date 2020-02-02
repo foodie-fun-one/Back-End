@@ -9,7 +9,7 @@ router.use(express.json());
 
 // GET ALL USERS / MUST VERIFY TOKEN
 
-router.get("/", verifyToken, (req, res) => {
+router.get("/users", verifyToken, (req, res) => {
   userModel
     .find()
     .then(users => {
@@ -24,7 +24,7 @@ router.get("/", verifyToken, (req, res) => {
 
 // GET USERS BY ID
 
-router.get("/:id", verifyToken, (req, res) => {
+router.get("/user/:id", verifyToken, (req, res) => {
   const { id } = req.params;
 
   userModel
@@ -47,7 +47,7 @@ router.get("/:id", verifyToken, (req, res) => {
 
 // CREATE A NEW USER
 
-router.post("/register", (req, res) => {
+router.post("/user/register", (req, res) => {
   const credentials = req.body;
   const hash = bc.hashSync(credentials.password, 12);
   credentials.password = hash;

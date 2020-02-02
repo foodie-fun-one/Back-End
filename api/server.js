@@ -7,11 +7,11 @@ const cors = require('cors');
 const server = express();
 
 // importing routers here
-const authRouter = require('../auth/auth-router');
+const userRouter = require('../api/users/users-router');
 
 // server routing
 
-server.use('/app/', authRouter);
+server.use('/api/', userRouter);
 
 
 // importing middleware here
