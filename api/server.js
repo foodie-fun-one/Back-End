@@ -9,9 +9,11 @@ const server = express();
 
 // importing routers here
 const userRouter = require('./routers/user-router');
+const restRouter = require('./routers/restaurant-router.js');
 
 // server routing
 
+server.use('/api/restaurants', restRouter);
 server.use('/api/', userRouter);
 
 
