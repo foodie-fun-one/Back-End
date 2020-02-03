@@ -1,7 +1,7 @@
 exports.up = function(knex) {
     return knex.schema.createTable("reviews", tbl => {
       tbl.increments();
-      tbl.integer("user_id", 255).notNullable().references('id').inTable("user").onDelete("RESTRICT").onUpdate("CASCADE");
+      tbl.integer("user_id", 255).notNullable().references('id').inTable("users").onDelete("RESTRICT").onUpdate("CASCADE");
       tbl.integer("restaurant_id", 255).notNullable().references('id').inTable("restaurants").onDelete("RESTRICT").onUpdate("CASCADE");
       tbl.string("review_disc", 255).notNullable();
       tbl.integer('price_rating');
