@@ -44,21 +44,17 @@ router.get('/:id', verifyToken, (req, res) => {
 
 // POST new cuisine value
 
-router.post('/', verifyToken, (req, res) => {
-
-    let cuisineData = req.body;
-
-    CuisineValuesModel.add(cuisineData)
-    .then(cuisineSaved => {
-        res.status(201).json(cuisineSaved)
-    })
-    .catch(error => {
-        console.log(error)
-        res.status(500).json({
-            serverMessage: `There is something wrong with the server.`
-        })
-    })
-})
+router.post("/", verifyToken, async (req, res) => {
+    const cuisineData = req.body;
+    try {
+      const add = await CuisineValuesModel.add(cuisineData);
+      res.status(200).json(add);
+    } catch (error) {
+      res.status(500).json({
+        serverMessage: `There is something wrong with the server. ${error}`
+      });
+    }
+  });
 
 
 // PUT/UPDATE a cuisine value
