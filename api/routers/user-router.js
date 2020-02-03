@@ -37,12 +37,51 @@ router.post('/register', (req, res) => {
     }
   });
 
-// login
+// login to user
+
 router.post('/login', validateLogin, (req, res) => {
     const token = generateToken(req.body)
     res.status(200).json({
-        welcomeMessage: `Logged in as ID ${req.req_id} | ${req.body.username}.`, 
+        welcomeMessage: `Logged in as (${req.req_id}) ${req.body.username}.`, 
         token: token})
 });
+
+
+// get all users
+
+router.get('/users', verifyToken, (req, res) => {
+    userModel.find()
+    .then(users => {
+        res.status(200).json(users);
+    })
+    .catch(error => {
+        res.status(500).json({
+            serverMessage: `There has been a server error.`
+        })
+    })
+})
+
+// get users by id 
+
+router.get('/users/:id', verifyToken, (req, res) => {
+    const { id } = req.params;
+
+    userModel.findById(id)
+    .then(user => {
+     if (user) {
+         res.status(200).json(user)
+     } else {
+         res.status(404).json({
+             errorMessage: `Could not find specified user.`
+         })
+     }
+    })
+    .catch(error => {
+        res.status(500).json({
+            serverMessage: `There has been a server error.`
+        })
+    })
+
+})
 
 module.exports = router;
