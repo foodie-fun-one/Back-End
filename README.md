@@ -11,19 +11,19 @@ URL: https://foodiefun-buildweek.herokuapp.com/
 
 ##### POST The following endpoints are available.
 
-..* POST /api/register 
+* POST /api/register 
 ###### {username, password, email} are required. 
 ###### Return = Nothing 
 
-..* POST /api/login 
+* POST /api/login 
 ###### {username, password} are required. 
 ###### Return = ID, username, and token. 
 
-..* GET /api/users 
+* GET /api/users 
 ###### Token is required. 
 ###### Return = All users
 
-..* GET /api/users/:id
+* GET /api/users/:id
 ###### Token is required. 
 ###### Return = Specific User
 
