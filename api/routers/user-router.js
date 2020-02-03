@@ -11,7 +11,7 @@ router.use(express.json());
 
 // register a new user
 
-router.post('/register', validateRegister, (req, res) => {
+router.post('/register', (req, res) => {
     const credentials = req.body;
     const hash = bc.hashSync(credentials.password, 14);
     credentials.password = hash; // hashing the password
