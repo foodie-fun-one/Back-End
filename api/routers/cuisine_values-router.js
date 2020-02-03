@@ -51,7 +51,7 @@ router.post("/", verifyToken, async (req, res) => {
       res.status(200).json(add);
     } catch (error) {
       res.status(500).json({
-        serverMessage: `There is something wrong with the server. ${error}`
+        serverMessage: `There is something wrong with the server.`
       });
     }
   });
