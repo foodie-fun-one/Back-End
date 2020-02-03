@@ -17,8 +17,8 @@ exports.up = function(knex) {
 
       .createTable("reviews", tbl => {
         tbl.increments();
-        tbl.integer("user_id", 255).notNullable().references('id').inTable("users").onDelete("RESTRICT").onUpdate("CASCADE");
-        tbl.integer("restaurant_id", 255).notNullable().references('id').inTable("restaurants").onDelete("RESTRICT").onUpdate("CASCADE");
+        tbl.integer("user_id", 255).notNullable().references('id').inTable("users").onDelete("CASCADE").onUpdate("CASCADE");
+        tbl.integer("restaurant_id", 255).notNullable().references('id').inTable("restaurants").onDelete("CASCADE").onUpdate("CASCADE");
         tbl.string("review_disc", 255).notNullable();
         tbl.integer('price_rating');
         tbl.integer('service_rating');
@@ -33,8 +33,8 @@ exports.up = function(knex) {
       
       .createTable("cuisine_type", tbl => {
         tbl.increments();
-        tbl.integer("cuisine_value_id", 255).notNullable().references('id').inTable("cuisine_values").onDelete("RESTRICT").onUpdate("CASCADE");
-        tbl.integer("restaurant_id", 255).notNullable().references('id').inTable("reviews").onDelete("RESTRICT").onUpdate("CASCADE");
+        tbl.integer("cuisine_value_id", 255).notNullable().references('id').inTable("cuisine_values").onDelete("CASCADE").onUpdate("CASCADE");
+        tbl.integer("restaurant_id", 255).notNullable().references('id').inTable("reviews").onDelete("CASCADE").onUpdate("CASCADE");
       });
 
   };

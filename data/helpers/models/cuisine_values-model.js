@@ -18,9 +18,9 @@ function findById(id) {
 }
 
 // add cuisine to the database
-function add(name) {
-    return db('cuisine_values')
-    .insert(name);
+async function add(name) {
+   const [id] = await db('cuisine_values').insert(name)
+   return findById(id);
 }
 
 function update(changes, id) {
