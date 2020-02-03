@@ -7,7 +7,6 @@ function validateLogin (req, res, next) {
     if (username && password) {
         userModel.findByUsername(username)
         .then(user => {
-            console.log(user)
             if (user && bc.compareSync(password, user.password)) {
                 
                 let {id, ...objNoId} = user ;
@@ -16,15 +15,15 @@ function validateLogin (req, res, next) {
                 next();
             }
             else {
-                res.status(401).json({ message: 'You shall not pass!!!' })
+                res.status(401).json({ errorMessage: 'Not authorized.' })
             }
         })
         .catch(error => {
             console.log(error.message)
-            res.status(500).json({ message: 'Ran into unexpected error'})
+            res.status(500).json({ serverMessage: 'There has been a server problem.'})
         })
     } else {
-        res.status(400).json({ message: 'Please provide credentials'})
+        res.status(400).json({ errorMessage: 'Please provide a username and password!'})
     }
   }
 
