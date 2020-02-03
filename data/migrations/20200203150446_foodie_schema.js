@@ -28,7 +28,7 @@ exports.up = function(knex) {
 
       .createTable("cuisine_values", tbl => {
         tbl.increments().unique();
-        tbl.string("name", 255).notNullable().onDelete('CASCADE');
+        tbl.string("name", 255).notNullable();
       })
       
       .createTable("cuisine_type", tbl => {
