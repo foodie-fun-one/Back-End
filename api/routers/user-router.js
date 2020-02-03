@@ -23,7 +23,7 @@ router.post('/register', (req, res) => {
   
       userModel.add(user) 
       .then(saved => {
-        res.status(201).json(saved, {message: `User created.`});
+        res.status(201).json(saved);
       })
       .catch(error => {
         res.status(500).json(error)
@@ -31,7 +31,7 @@ router.post('/register', (req, res) => {
   
     } else {
       res.status(400).json({
-        errorMsg: `Invalid username or password.`,
+        errorMessage: `There has been an error registering this user. `,
         errors: validateResult.errors
       })
     }

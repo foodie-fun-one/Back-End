@@ -10,6 +10,10 @@ function validateRegister(user) {
         errors.push('Please include a password that is atleast 6 characters long.')
     }
 
+    if (!user.email) {
+        errors.push('An email is required!');
+    }
+
     return {
         isSuccessfull: errors.length > 0 ? false : true,
         errors
