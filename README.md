@@ -25,5 +25,12 @@ URL: https://foodiefun-buildweek.herokuapp.com/
 > Token is required. 
 > Return = Specific User
 
+* PUT /api/users/:id
+> Token is required. 
+
+
+* DELETE /api/users/:id
+> Token is required. 
+
 ***
 
