@@ -7,6 +7,15 @@ URL: https://foodiefun-buildweek.herokuapp.com/
 
 ***
 
+###### Current Users
+
+	"username": "John",
+	"password": "lambdaisnice",
+	"email": "Johndoe@lambda.com",
+	"city": "Chicago"
+
+***
+
 ## The following endpoints are available for **USER ROUTER**.
 
 * POST /api/register 
