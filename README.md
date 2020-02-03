@@ -10,7 +10,7 @@ URL: https://foodiefun-buildweek.herokuapp.com/
 ## The following endpoints are available for **USER ROUTER**.
 
 * POST /api/register 
-> {username, password, email} are required. 
+> {username, password, email, city} are required. 
 > Return = Nothing 
 
 * POST /api/login 
