@@ -1,6 +1,7 @@
-const router = express.Router();
+const router = require("express").Router();
 const verifyToken = require('../../data/helpers/middleware/verifyToken');
 const CuisineValuesModel = require("../../data/helpers/models/cuisine_values-model");
+
 router.use(express.json());
 
 
