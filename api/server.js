@@ -9,10 +9,12 @@ const server = express();
 
 // importing routers here
 const userRouter = require('./routers/user-router');
+const cuisineRouter = require('./routers/cuisine_values-router');
 
 // server routing
 
 server.use('/api/', userRouter);
+server.use('/api/cuisine/', cuisineRouter);
 
 
 // importing middleware here
