@@ -12,24 +12,30 @@ router.use(express.json());
 // register a new user
 
 router.post('/register', (req, res) => {
-    const credentials = req.body;
-    const hash = bc.hashSync(credentials.password, 14);
-    credentials.password = hash; // hashing the password
-
-    userModel.add(credentials)
-    .then(user => {
-        const token = generateToken(req.body)
-        res.status(201).json({
-            welcomeMessage: `Welcome ${user.username}. Your ID is ${user.id}`, token
-        })
-    })
-    .catch(error => {
-        res.status(500).json({
-            serverMessage: `There was an error with the server. ${error}`
-        })
-    });
-});
-
+    // implement registration
+    let user = req.body;
+    // validate the data before sending it to the database!
+    const validateResult = validateRegister(user);
+  
+    if (validateResult.isSuccessfull === true) {
+      const hash = bc.hashSync(user.password, 12);
+      user.password = hash;
+  
+      userModel.add(user) 
+      .then(saved => {
+        res.status(201).json(saved, {message: `User created.`});
+      })
+      .catch(error => {
+        res.status(500).json(error)
+      })
+  
+    } else {
+      res.status(400).json({
+        errorMsg: `Invalid username or password.`,
+        errors: validateResult.errors
+      })
+    }
+  });
 
 
 module.exports = router;
