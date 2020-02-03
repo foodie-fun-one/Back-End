@@ -84,4 +84,52 @@ router.get('/users/:id', verifyToken, (req, res) => {
 
 })
 
+// update a user
+
+router.put('/users/:id', verifyToken, (req, res) => {
+    const { id } = req.params;
+    const changes = req.body;
+
+    userModel.findById(id)
+    .then(user => {
+        if(user) {
+            userModel.update(changes, id)
+            .then(updatedUser => {
+                res.status(201).json(updatedUser);
+            })
+        } else {
+            res.status(404).json({
+                errorMessage: `Could not find specified user.`
+            })
+        }
+    })
+    .catch(error => {
+        res.status(500).json({
+            serverMessage: `There has been a server error.`
+        })
+    })
+})
+
+// delete a user
+
+router.delete('/users/:id', verifyToken, (req, res) => {
+    const { id } = req.params;
+
+    userModel.remove(id)
+    .then(deleted => {
+        if (deleted) {
+            res.status(204).json(deleted)
+        } else {
+            res.status(404).json({
+                errorMessage: `Could not find specified user.`
+            })
+        }
+    })
+    .catch(error => {
+        res.status(500).json({
+            serverMessage: `There has been a server error.`
+        })
+    })
+})
+
 module.exports = router;
