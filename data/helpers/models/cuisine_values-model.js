@@ -18,13 +18,10 @@ function findById(id) {
 }
 
 // add cuisine to the database
-const add = cuisine => {
-    return db("cuisine_values")
-      .insert(cuisine)
-      .then(ids => {
-        return findById(ids[0]);
-      });
-  };
+function add(name) {
+    return db('cuisine_values')
+    .insert(name);
+}
 
 function update(changes, id) {
     return db('cuisine_values')
