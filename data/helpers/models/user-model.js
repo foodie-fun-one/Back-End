@@ -1,4 +1,4 @@
-const db = require('../../data/dbConfig'); // dbconfig connects with knexfile
+const db = require('../../../data/dbConfig'); // dbconfig connects with knexfile
 
 module.exports = {
     find,

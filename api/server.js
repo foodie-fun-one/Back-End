@@ -8,7 +8,7 @@ const server = express();
 
 
 // importing routers here
-const userRouter = require('./users/users-router');
+const userRouter = require('./routers/user-router');
 
 // server routing
 
