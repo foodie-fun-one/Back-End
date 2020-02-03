@@ -39,26 +39,11 @@ router.post('/register', (req, res) => {
 
 // login
 
-router.post("/login", (req, res) => {
-    let { username, password } = req.body;
-  
-    userModel.findByUsername({ username })
-      .first()
-      .then(user => {
-        if (user && bc.compareSync(password, user.password)) {
-          const token = generateToken(user);
-  
-          res.status(200).json({
-            message: `Welcome ${user.username}! You are now logged in.`,
-            token,
-          });
-        } else {
-          res.status(401).json({ message: "Invalid Credentials" });
-        }
-      })
-      .catch(error => {
-        res.status(500).json(error);
-      });
-  });
+router.post('/login', validateLogin, (req, res) => {
+    const token = generateToken(req.body)
+    res.status(200).json({username: req.body.username, 
+    id: req.req_id,
+    token: token})
+});
 
 module.exports = router;
