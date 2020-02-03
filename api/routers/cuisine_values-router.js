@@ -45,12 +45,15 @@ router.get('/:id', verifyToken, (req, res) => {
 // POST new cuisine value
 
 router.post('/', verifyToken, (req, res) => {
-    const cuisineData = req.body;
+
+    let cuisineData = req.body;
+
     CuisineValuesModel.add(cuisineData)
     .then(cuisineSaved => {
-        res.status(201).json(cuisineSaved[0])
+        res.status(201).json(cuisineSaved)
     })
     .catch(error => {
+        console.log(error)
         res.status(500).json({
             serverMessage: `There is something wrong with the server.`
         })
