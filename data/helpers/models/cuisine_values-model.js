@@ -3,7 +3,6 @@ const db = require('../../../data/dbConfig'); // dbconfig connects with knexfile
 module.exports = {
     find,
     findById,
-    findByCuisine,
     add,
     update,
     remove,
@@ -16,11 +15,6 @@ function find() {
 function findById(id) {
     return db('cuisine_values')
     .where({ id }).first();
-}
-
-function findByCuisine(name) {
-    return db('cuisine_values')
-    .where({ name }).first();
 }
 
 // add cuisine to the database
