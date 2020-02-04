@@ -92,7 +92,10 @@ router.get("/restaurant/:id", verifyToken, (req, res) => {
 router.post('/', verifyToken, validateCuisineType, async (req, res) => {
 
     let body = req.body;
-    let validateResult = validateCuisineType(body)
+    console.log(body);
+    let validateResult = validateCuisineType(body);
+
+    console.log(validateResult);
 
     try {
         const add = CuisineTypeModel.add(body);
@@ -106,9 +109,8 @@ router.post('/', verifyToken, validateCuisineType, async (req, res) => {
         }
     }
     catch (error) {
-        console.log(error)
         res.status(500).json({
-            serverMessage: `There is something wrong with the server. ${error}`
+            serverMessage: `There is something wrong with the server.`
           });
     }
 })
