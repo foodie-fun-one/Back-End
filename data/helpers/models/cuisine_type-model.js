@@ -3,7 +3,7 @@ const db = require('../../../data/dbConfig'); // dbconfig connects with knexfile
 module.exports = {
     find, // finds everything
     findById, // finds by cuisine-type DB ID
-    findByValue, // /api/cuisine/type/:id
+    findByValue, // /api/cuisine/value/:id
     findByRestaurant, // api/cuisine/restaurant/:id
     add, // add a user_id/rest_id combo
     update, // update combo
@@ -45,4 +45,21 @@ function findByRestaurant(id) {
     return db('cuisine_type').as('CT')
     .where('CT.restaurant_id', '=', id)
     .first()
+}
+
+function add(combo) {
+    return db('cuisine_type')
+    .insert(combo);
+}
+
+function update(changes, id) {
+    return db('cuisine_type')
+    .where({ id })
+    .update(changes);
+}
+
+function remove(id) {
+    return db('cuisine_type')
+    .where({ id })
+    .del();
 }
