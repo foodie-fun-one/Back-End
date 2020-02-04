@@ -89,18 +89,15 @@ router.get("/restaurant/:id", verifyToken, (req, res) => {
 
 // POST new cuisine type combo
 
-router.post('/', verifyToken, validateCuisineType, async (req, res) => {
-
+router.post('/', verifyToken, async (req, res) => {
     let body = req.body;
     console.log(body);
     let validateResult = validateCuisineType(body);
-
     console.log(validateResult);
-
     try {
-        const add = CuisineTypeModel.add(body);
+        CuisineTypeModel.add(body)
           if (validateResult.isSuccessfull === true) {
-            res.status(201).json(add)
+            res.status(201).json("Successful")
         } else {
             res.status(400).json({
                 errorMsg: `Both cuisine value ID and restaurant ID must be entered in.`,
@@ -109,6 +106,7 @@ router.post('/', verifyToken, validateCuisineType, async (req, res) => {
         }
     }
     catch (error) {
+      console.log(error)
         res.status(500).json({
             serverMessage: `There is something wrong with the server.`
           });
