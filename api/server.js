@@ -4,6 +4,15 @@ const helmet = require("helmet");
 
 // creating express server
 const server = express();
+const cors = require("cors");
+
+const corsOptions = {
+  origin: "*",
+  methods: ["GET", "PUT", "POST", "DELETE"],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Content-Length', 'X-Requested-With', 'Accept'],
+};
+
+server.use(cors(corsOptions));
 
 // importing routers here
 const userRouter = require("./routers/user-router");
