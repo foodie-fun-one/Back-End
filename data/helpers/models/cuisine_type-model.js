@@ -37,12 +37,16 @@ function findById(id) {
 //  .first()
 // }
 
+// function findByValue(id) {
+//     return db.raw(`
+//         SELECT *
+//         FROM cuisine_type as CT
+//         WHERE CT.cuisine_value_id = ${id}`
+//     )
+// }
+
 function findByValue(id) {
-    return db.raw(`
-        SELECT *
-        FROM cuisine_type as CT
-        WHERE CT.cuisine_value_id = ${id}`
-    )
+    return db('cuisine_type').where('cuisine_value_id', id).first();
 }
 
 // SELECT *
