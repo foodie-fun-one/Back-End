@@ -14,6 +14,10 @@ function validateRegister(user) {
         errors.push('An email is required!');
     }
 
+    if (!user.city) {
+        errors.push('A city is required!');
+    }
+
     return {
         isSuccessfull: errors.length > 0 ? false : true,
         errors
