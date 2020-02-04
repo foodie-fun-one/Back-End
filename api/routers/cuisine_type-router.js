@@ -116,7 +116,7 @@ router.post("/", verifyToken, (req, res) => {
 router.put("/:id", verifyToken, (req, res) => {
   const { id } = req.params;
   const changes = req.body;
-  let validateResult = validateCuisineType(body);
+  let validateResult = validateCuisineType(changes);
 
   CuisineTypeModel.findById(id)
     .then(cuisineComboFound => {
