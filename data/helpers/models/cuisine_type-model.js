@@ -46,7 +46,7 @@ function findById(id) {
 // }
 
 function findByValue(id) {
-    return db('cuisine_type').where('cuisine_value_id', id).first();
+    return db('cuisine_type').where('cuisine_value_id', id);
 }
 
 // SELECT *
