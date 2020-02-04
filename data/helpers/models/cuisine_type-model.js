@@ -61,14 +61,14 @@ function findByRestaurant(id) {
     .first()
 }
 
-function add(combo) {
+function add(body) {
     return db('cuisine_type')
-    .insert(combo);
+    .insert(body);
 }
 
 function update(changes, id) {
     return db('cuisine_type')
-    .where({ id })
+    .where('id', id)
     .update(changes);
 }
 

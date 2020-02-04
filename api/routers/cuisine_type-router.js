@@ -89,16 +89,27 @@ router.get("/restaurant/:id", verifyToken, (req, res) => {
 
 // POST new cuisine type combo
 
-router.post("/", verifyToken, async (req, res) => {
-  const cuisineTypeData = req.body;
-  try {
-        const add = await CuisineTypeModel.add(cuisineTypeData);
-        res.status(200).json(add);
-  } catch (error) {
-    res.status(500).json({
-      serverMessage: `There is something wrong with the server.`
-    });
-  }
+router.post("/", verifyToken, validateCuisineType, (req, res) => {
+ 
+    let body = req.body;
+    let validateResult = validateCuisineType(body)
+
+    CuisineTypeModel.add(body)
+    .then(addCombo => {
+        if (validateResult.isSuccessfull === true) {
+            res.status(201).json(addCombo)
+        } else {
+            res.status(400).json({
+                errorMsg: `Invalid username or password.`,
+                errors: validateResult.errors
+              })
+        }
+    })
+    .catch(error => {
+        res.status(500).json({
+          serverMessage: `There is something wrong with the server.`
+        });
+      });
 });
 
 // update a combo
