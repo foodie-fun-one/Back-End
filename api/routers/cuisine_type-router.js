@@ -89,16 +89,11 @@ router.get("/restaurant/:id", verifyToken, (req, res) => {
 
 // POST new cuisine type combo
 
-router.post("/", verifyToken, validateCuisineType, async (req, res) => {
+router.post("/", verifyToken, async (req, res) => {
   const cuisineTypeData = req.body;
-  const validateResult = validateCuisineType(cuisine_type);
-
-
   try {
-    if (validateResult.isSuccessfull === true) {
         const add = await CuisineTypeModel.add(cuisineTypeData);
         res.status(200).json(add);
-    }
   } catch (error) {
     res.status(500).json({
       serverMessage: `There is something wrong with the server.`
