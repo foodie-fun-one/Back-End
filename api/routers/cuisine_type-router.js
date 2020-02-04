@@ -106,8 +106,9 @@ router.post('/', verifyToken, validateCuisineType, async (req, res) => {
         }
     }
     catch (error) {
+        console.log(error)
         res.status(500).json({
-            serverMessage: `There is something wrong with the server. `
+            serverMessage: `There is something wrong with the server. ${error}`
           });
     }
 })
