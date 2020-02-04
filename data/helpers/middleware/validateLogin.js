@@ -15,7 +15,7 @@ function validateLogin (req, res, next) {
                 next();
             }
             else {
-                res.status(401).json({ errorMessage: 'Not authorized.' })
+                res.status(401).json({ errorMessage: 'There is no account with given credentials.' })
             }
         })
         .catch(error => {
