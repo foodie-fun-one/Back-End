@@ -19,9 +19,21 @@ server.use('/api/cuisine/', cuisineRouter);
 server.use('/api/cuisinetype/', cuisineTypeRouter)
 
 // importing middleware here
-server.use(helmet(), cors(), express.json());
+server.use(helmet(), express.json());
 
-// middleware server.use here
+server.use(cors({
+    origin: 'http://localhost',
+    allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
+server.options('*', cors())
+
+server.all('', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://localhost");
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    next();
+});
 
 server.get('/', (req, res) => {
     res.send(`Server is LIVE and working.`)
