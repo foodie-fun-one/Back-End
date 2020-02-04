@@ -52,7 +52,7 @@ router.get("/value/:id", verifyToken, (req, res) => {
   CuisineTypeModel.findByValue(id)
     .then(cuisineTypeValue => {
       if (cuisineTypeValue) {
-        res.status(200).json(cuisineTypeValue.rows);
+        res.status(200).json(cuisineTypeValue);
       } else {
         res.status(404).json({
           errorMessage: `Could not find cuisine type combo by given ID.`
