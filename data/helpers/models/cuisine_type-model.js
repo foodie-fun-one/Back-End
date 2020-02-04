@@ -31,10 +31,18 @@ function findById(id) {
 // FROM cuisine_type as CT
 // WHERE CT.cuisine_value_id=9
 
+// function findByValue(id) {
+//  return db('cuisine_type').as('CT')
+//  .where('CT.cuisine_value_id', '=', {id})
+//  .first()
+// }
+
 function findByValue(id) {
- return db('cuisine_type').as('CT')
- .where('CT.cuisine_value_id', '=', {id})
- .first()
+    return db.raw(`
+        SELECT *
+        FROM cuisine_type as CT
+        WHERE CT.cuisine_value_id = ${id}`
+    )
 }
 
 // SELECT *
