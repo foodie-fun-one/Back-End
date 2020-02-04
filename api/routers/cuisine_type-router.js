@@ -91,13 +91,12 @@ router.get("/restaurant/:id", verifyToken, (req, res) => {
 
 router.post('/', verifyToken, (req, res) => {
     let body = req.body;
-    console.log(body);
     let validateResult = validateCuisineType(body);
-    console.log(validateResult);
+
     if (validateResult.isSuccessfull === true) {
       CuisineTypeModel.add(body)
         .then(add => {
-          res.json(add)
+          res.json('Added Succesfully', add.rows)
         })
         .catch(err => {
           console.log(err)
