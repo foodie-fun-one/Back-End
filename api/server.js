@@ -16,6 +16,7 @@ server.use(cors(corsOptions));
 
 // importing routers here
 const userRouter = require("./routers/user-router");
+const restRouter = require('./routers/restaurant-router.js');
 const cuisineRouter = require("./routers/cuisine_values-router");
 const cuisineTypeRouter = require("./routers/cuisine_type-router");
 
@@ -23,6 +24,7 @@ const cuisineTypeRouter = require("./routers/cuisine_type-router");
 // server routing
 
 server.use("/api/", userRouter);
+server.use('/api/restaurants', restRouter);
 server.use("/api/cuisine/", cuisineRouter);
 server.use("/api/cuisinetype/", cuisineTypeRouter);
 
