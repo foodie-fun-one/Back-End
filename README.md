@@ -14,6 +14,11 @@ URL: https://foodiefun-buildweek.herokuapp.com/
 	"email": "BillyBob@lambda.com",
 	"city": "Orlando"
 
+	"username": "Johnny",
+	"password": "lambdaisnice",
+	"email": "Johndoeb@lambda.com",
+	"city": "Chicago"
+
 ***
 
 ## The following endpoints are available for **USER ROUTER**.
