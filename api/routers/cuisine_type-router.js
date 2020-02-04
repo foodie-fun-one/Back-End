@@ -46,13 +46,13 @@ router.get("/:id", verifyToken, (req, res) => {
 // GET cuisine type by value id
 
 router.get("/value/:id", verifyToken, (req, res) => {
-    
+
   const { id } = req.params;
 
   CuisineTypeModel.findByValue(id)
     .then(cuisineTypeValue => {
       if (cuisineTypeValue) {
-        res.status(200).json(cuisineTypeValue);
+        res.status(200).json(cuisineTypeValue.row);
       } else {
         res.status(404).json({
           errorMessage: `Could not find cuisine type combo by given ID.`
