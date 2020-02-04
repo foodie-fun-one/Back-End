@@ -9,10 +9,10 @@ URL: https://foodiefun-buildweek.herokuapp.com/
 
 ###### Current Users
 
-	"username": "John",
+	"username": "Billy",
 	"password": "lambdaisnice",
-	"email": "Johndoe@lambda.com",
-	"city": "Chicago"
+	"email": "BillyBob@lambda.com",
+	"city": "Orlando"
 
 ***
 
