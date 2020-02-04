@@ -1,7 +1,6 @@
 // package imports
 const express = require("express");
 const helmet = require("helmet");
-const cors = require("cors");
 
 // creating express server
 const server = express();
@@ -11,12 +10,6 @@ const userRouter = require("./routers/user-router");
 const cuisineRouter = require("./routers/cuisine_values-router");
 const cuisineTypeRouter = require("./routers/cuisine_type-router");
 
-// cors options
-
-const corsOptions = {
-    origin: "*",
-    methods: ['GET', 'PUT', 'POST', 'DELETE']
-}
 
 // server routing
 
@@ -25,7 +18,7 @@ server.use("/api/cuisine/", cuisineRouter);
 server.use("/api/cuisinetype/", cuisineTypeRouter);
 
 // importing middleware here
-server.use(helmet(), cors(corsOptions), express.json());
+server.use(helmet(), express.json());
 
 
 server.get("/", (req, res) => {
