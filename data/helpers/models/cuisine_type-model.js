@@ -14,7 +14,7 @@ module.exports = {
 // FROM cuisine_type
 
 function find() {
-    return db('cuisine-type')
+    return db('cuisine_type')
 }
 
 // SELECT *
@@ -22,7 +22,7 @@ function find() {
 // WHERE id=3
 
 function findById(id) {
-    return db('cuisine-type')
+    return db('cuisine_type')
     .where({ id })
     .first()
 }
@@ -32,7 +32,7 @@ function findById(id) {
 // WHERE CT.cuisine_value_id=9
 
 function findByValue(id) {
- return db('cuisine-type').as('CT')
+ return db('cuisine_type').as('CT')
  .where('CT.cuisine_value_id', '=', id)
  .first()
 }
