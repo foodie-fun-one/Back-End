@@ -93,10 +93,10 @@ router.post('/', verifyToken, validateCuisineType, async (req, res) => {
 
     let body = req.body;
     let validateResult = validateCuisineType(body)
-    
+
     try {
-        const add = await CuisineTypeModel.add(body);
-         if (validateResult.isSuccessfull === true) {
+        const add = CuisineTypeModel.add(body);
+          if (validateResult.isSuccessfull === true) {
             res.status(201).json(add)
         } else {
             res.status(400).json({
@@ -107,7 +107,7 @@ router.post('/', verifyToken, validateCuisineType, async (req, res) => {
     }
     catch (error) {
         res.status(500).json({
-            serverMessage: `There is something wrong with the server.`
+            serverMessage: `There is something wrong with the server. `
           });
     }
 })
