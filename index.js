@@ -4,19 +4,11 @@ const server = require("./api/server");
 
 const corsOptions = {
   origin: "*",
-  methods: ["GET", "PUT", "POST", "DELETE"]
+  methods: ["GET", "PUT", "POST", "DELETE"],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Content-Length', 'X-Requested-With', 'Accept'],
 };
 
 server.use(cors(corsOptions));
-
-server.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
 
 const port = process.env.PORT || 8015;
 
