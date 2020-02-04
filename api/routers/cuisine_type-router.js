@@ -46,7 +46,9 @@ router.get("/:id", verifyToken, (req, res) => {
 // GET cuisine type by value id
 
 router.get("/value/:id", verifyToken, (req, res) => {
+    
   const { id } = req.params;
+
   CuisineTypeModel.findByValue(id)
     .then(cuisineTypeValue => {
       if (cuisineTypeValue) {
@@ -91,15 +93,16 @@ router.post("/", verifyToken, validateCuisineType, async (req, res) => {
   const cuisineTypeData = req.body;
   const validateResult = validateCuisineType(cuisine_type);
 
-  if (validateResult.isSuccessfull === true) {
-    try {
-      const add = await CuisineTypeModel.add(cuisineTypeData);
-      res.status(200).json(add);
-    } catch (error) {
-      res.status(500).json({
-        serverMessage: `There is something wrong with the server.`
-      });
+
+  try {
+    if (validateResult.isSuccessfull === true) {
+        const add = await CuisineTypeModel.add(cuisineTypeData);
+        res.status(200).json(add);
     }
+  } catch (error) {
+    res.status(500).json({
+      serverMessage: `There is something wrong with the server.`
+    });
   }
 });
 

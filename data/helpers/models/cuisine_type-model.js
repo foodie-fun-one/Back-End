@@ -33,7 +33,7 @@ function findById(id) {
 
 function findByValue(id) {
  return db('cuisine_type').as('CT')
- .where('CT.cuisine_value_id', '=', id)
+ .where('CT.cuisine_value_id', '=', {id})
  .first()
 }
 
@@ -43,7 +43,7 @@ function findByValue(id) {
 
 function findByRestaurant(id) {
     return db('cuisine_type').as('CT')
-    .where('CT.restaurant_id', '=', id)
+    .where('CT.restaurant_id', '=', {id})
     .first()
 }
 
