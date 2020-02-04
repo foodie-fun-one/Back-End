@@ -46,7 +46,9 @@ function findById(id) {
 // }
 
 function findByValue(id) {
-    return db('cuisine_type').where('cuisine_value_id', id);
+    return db('cuisine_type')
+    .where('cuisine_value_id', id)
+    .first();
 }
 
 // SELECT *
@@ -54,8 +56,8 @@ function findByValue(id) {
 // WHERE CT.restaurant_id = 4
 
 function findByRestaurant(id) {
-    return db('cuisine_type').as('CT')
-    .where('CT.restaurant_id', '=', {id})
+    return db('cuisine_type')
+    .where('restaurant_id', id)
     .first()
 }
 
