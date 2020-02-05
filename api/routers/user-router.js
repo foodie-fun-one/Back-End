@@ -26,7 +26,7 @@ router.post('/register', (req, res) => {
         res.status(201).json('Account has been created.');
       })
       .catch(error => {
-        res.status(500).json(error)
+        res.status(500).json(error.response)
       })
   
     } else {
