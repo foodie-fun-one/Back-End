@@ -6,13 +6,7 @@ const helmet = require("helmet");
 const server = express();
 const cors = require("cors");
 
-server.all('*', function(req, res, next) {
-  let origin = req.get('origin'); 
-  res.header('Access-Control-Allow-Origin', origin);
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-});
+server.options('*', cors());
 
 const corsOptions = {
   origin: "*",
