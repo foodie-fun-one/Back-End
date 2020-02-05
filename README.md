@@ -47,6 +47,28 @@ URL: https://foodiefun-buildweek.herokuapp.com/
 
 ***
 
+### The following endpoints are available for **RESTAURANTS ROUTER**.
+
+* POST /api/restaurants
+> {name, hours, address} are required. 
+> Return = Nothing 
+
+* GET /api/restaurants
+> Token is required. 
+> Return = All restaurants
+
+* GET /api/restaurants/:id
+> Token is required. 
+> Return = Specific restaurants
+
+* PUT /api/restaurants/:id
+> Token is required. 
+
+* DELETE /api/restaurants/:id
+> Token is required. 
+
+***
+
 ### The following endpoints are available for **CUISINE VALUE ROUTER**.
 
 * POST /api/cuisine 
@@ -62,9 +84,33 @@ URL: https://foodiefun-buildweek.herokuapp.com/
 > Return = Specific cuisine value
 
 * PUT /api/cuisine/:id
+> {name} are required. 
 > Token is required. 
 
 * DELETE /api/cuisine/:id
+> Token is required. 
+
+***
+
+### The following endpoints are available for **CUISINE TYPE ROUTER**.
+
+* POST /api/cuisinetype/
+> {cuisine_value_id, restaurant_id} are required. 
+> Return = Nothing 
+
+* GET /api/cuisinetype/
+> Token is required. 
+> Return = All cuisine types
+
+* GET /api/cuisinetype/:id
+> Token is required. 
+> Return = Specific cuisine type
+
+* PUT /api/cuisinetype/:id
+> {cuisine_value_id, restaurant_id} are required. 
+> Token is required. 
+
+* DELETE /api/cuisinetype/:id
 > Token is required. 
 
 ***

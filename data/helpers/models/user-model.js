@@ -24,9 +24,14 @@ function findByUsername(username) {
 }
 
 // add user to the database
-async function add(user) {
-    const [id] = await db('users').insert(user);
-    return findById(id)
+// async function add(user) {
+//     const [id] = await db('users').insert(user);
+//     return findById(id)
+// }
+
+function add(user) {
+    return db('users')
+    .insert(user);
 }
 
 function update(changes, id) {
