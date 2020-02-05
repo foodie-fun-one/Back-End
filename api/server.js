@@ -6,6 +6,14 @@ const helmet = require("helmet");
 const server = express();
 const cors = require("cors");
 
+server.all('*', function(req, res, next) {
+  let origin = req.get('origin'); 
+  res.header('Access-Control-Allow-Origin', origin);
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
 const corsOptions = {
   origin: "*",
   methods: ["GET", "PUT", "POST", "DELETE"],
@@ -14,12 +22,6 @@ const corsOptions = {
 
 server.use(cors(corsOptions));
 
-
-server.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
 
 // importing routers here
 const userRouter = require("./routers/user-router");
