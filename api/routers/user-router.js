@@ -6,6 +6,7 @@ const validateLogin = require("../../data/helpers/middleware/validateLogin");
 const validateRegister = require("../../data/helpers/middleware/validateRegister");
 const generateToken = require("../../data/helpers/middleware/generateToken");
 const verifyToken = require("../../data/helpers/middleware/verifyToken");
+const Logout = require('../../data/helpers/middleware/logout');
 const router = express.Router();
 router.use(express.json());
 
@@ -46,6 +47,18 @@ router.post("/login", validateLogin, (req, res) => {
     token: token
   });
 });
+
+// logout
+
+router.get('/logout', Logout, (req, res, next) => {
+  req.session.destroy((err) => {
+    if (err) {
+      next(err)
+    } else {
+      return res.status(200).json('Logged Out')
+    }
+  })
+})
 
 // get all users
 
