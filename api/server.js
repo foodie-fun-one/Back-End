@@ -6,11 +6,9 @@ const helmet = require("helmet");
 const server = express();
 const cors = require("cors");
 
-server.options('*', cors());
-
 const corsOptions = {
   origin: "*",
-  methods: ["GET", "PUT", "POST", "DELETE"],
+  methods: ["GET", "PUT", "POST", "DELETE", "OPTIONS"],
   allowedHeaders: ['Content-Type', 'Authorization', 'Content-Length', 'X-Requested-With', 'Accept'],
 };
 
