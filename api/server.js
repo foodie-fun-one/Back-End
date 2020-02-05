@@ -10,11 +10,13 @@ const server = express();
 // importing routers here
 const userRouter = require('./routers/user-router');
 const restRouter = require('./routers/restaurant-router.js');
+const reviewRouter = require('./routers/review-router.js');
 const cuisineRouter = require('./routers/cuisine_values-router');
 
 // server routing
 
 server.use('/api/restaurants', restRouter);
+server.use('/api/reviews', reviewRouter);
 server.use('/api/', userRouter);
 server.use('/api/cuisine/', cuisineRouter);
 
