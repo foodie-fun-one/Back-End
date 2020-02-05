@@ -4,7 +4,8 @@ module.exports = (req, res, next) => {
         message: `Incorrect Username and Password.`
     }
 
-    if (!req.session && !req.session.user) {
+    if (!req.session && !req.session.username) {
+        console.log(req.session, req.session.username)
         res.status(401).json(authenticationError)
     } else {
         next()
