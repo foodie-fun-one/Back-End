@@ -48,17 +48,6 @@ router.post("/login", validateLogin, (req, res) => {
   });
 });
 
-// logout
-
-router.get('/logout', Logout, (req, res, next) => {
-  req.session.destroy((err) => {
-    if (err) {
-      next(err)
-    } else {
-      return res.status(200).json('Logged Out')
-    }
-  })
-})
 
 // get all users
 
