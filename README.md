@@ -31,9 +31,6 @@ URL: https://foodiefun-buildweek.herokuapp.com/
 > {username, password} are required. 
 > Return = ID, username, and token. 
 
-* GET /api/logout
-> Logsout user session
-
 * GET /api/users 
 > Token is required. 
 > Return = All users
