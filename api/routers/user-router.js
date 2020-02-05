@@ -6,7 +6,6 @@ const validateLogin = require("../../data/helpers/middleware/validateLogin");
 const validateRegister = require("../../data/helpers/middleware/validateRegister");
 const generateToken = require("../../data/helpers/middleware/generateToken");
 const verifyToken = require("../../data/helpers/middleware/verifyToken");
-const Logout = require('../../data/helpers/middleware/logout');
 const router = express.Router();
 router.use(express.json());
 
