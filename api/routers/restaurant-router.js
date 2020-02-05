@@ -53,6 +53,7 @@ router.post('/', verifyToken, (req, res) => {
             }
         })
         .catch(err => {
+            console.log(err)
             res.status(500).json({
                 errorMessage: "An error occured attempting to add this restaurant."
             })
