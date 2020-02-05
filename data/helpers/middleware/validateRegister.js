@@ -6,7 +6,7 @@ function validateRegister(user) {
         errors.push('Please incldue a username with more than 3 characters');
     }
 
-    if (!user.password || user.password.length <= 6 ) {
+    if (!user.password || user.password.length <= 4 ) {
         errors.push('Please include a password that is atleast 6 characters long.')
     }
 
