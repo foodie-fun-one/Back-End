@@ -14,6 +14,13 @@ const corsOptions = {
 
 server.use(cors(corsOptions));
 
+
+server.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 // importing routers here
 const userRouter = require("./routers/user-router");
 const restRouter = require('./routers/restaurant-router.js');
