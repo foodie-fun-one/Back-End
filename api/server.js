@@ -18,28 +18,18 @@ server.use(cors(corsOptions));
 // importing routers here
 const userRouter = require("./routers/user-router");
 const restRouter = require('./routers/restaurant-router.js');
-<<<<<<< HEAD
-const reviewRouter = require('./routers/review-router.js');
-const cuisineRouter = require('./routers/cuisine_values-router');
-=======
 const cuisineRouter = require("./routers/cuisine_values-router");
 const cuisineTypeRouter = require("./routers/cuisine_type-router");
+const reviewRouter = require('./routers/review-router.js');
 
->>>>>>> 238e20ff27c049bcc1f4e2b66e13d4bb4b550bba
 
 // server routing
 
 server.use("/api/", userRouter);
 server.use('/api/restaurants', restRouter);
-<<<<<<< HEAD
 server.use('/api/reviews', reviewRouter);
-server.use('/api/', userRouter);
-server.use('/api/cuisine/', cuisineRouter);
-
-=======
 server.use("/api/cuisine/", cuisineRouter);
 server.use("/api/cuisinetype/", cuisineTypeRouter);
->>>>>>> 238e20ff27c049bcc1f4e2b66e13d4bb4b550bba
 
 // importing middleware here
 server.use(helmet(), express.json());
