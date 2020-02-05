@@ -23,7 +23,7 @@ router.post('/register', (req, res) => {
   
       userModel.add(user) 
       .then(saved => {
-        res.status(201).json(saved);
+        res.status(201).json('Account has been created.');
       })
       .catch(error => {
         res.status(500).json(error)
