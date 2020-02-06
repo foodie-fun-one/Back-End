@@ -48,8 +48,11 @@ router.post('/', verifyToken, (req, res) => {
         .then(rest => {
             restModel.find()
             .then(findrestaurant => {
-                findrestaurant.map(item => {
-                    console.log(item)
+                findrestaurant.map(items => {
+                    const resToArray = []
+                    items.push(resToArray);
+                    let lastObject = resToArray.length - 1;
+                    console.log(lastObject)
                 })
             })
             
