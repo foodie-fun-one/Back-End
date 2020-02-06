@@ -41,6 +41,7 @@ router.post("/register", (req, res) => {
 
 router.post("/login", validateLogin, (req, res) => {
   const token = generateToken(req.body);
+  const username = generateToken(req.body);
   res.status(200).json({
     welcomeMessage: `Logged in as (${req.req_id}) ${req.body.username}.`,
     token: token,
