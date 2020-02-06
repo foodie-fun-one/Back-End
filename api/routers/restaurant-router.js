@@ -49,10 +49,10 @@ router.post('/', verifyToken, (req, res) => {
             const keys = Object.keys(req.body);
 
             if(keys.includes('name') && keys.includes('hours') && keys.includes('address')) {
-                console.log(res)
+                console.log(res.data)
                 res.status(201).json({
                     message: `Restaurant has been created`,
-                    id: `${req.req_id}`
+                    id: `${rest.data}`
                 });
             }
         })
