@@ -16,9 +16,8 @@ function findById(id) {
     return db('restaurants').where('id', id);
 }
 
- function add(body) {
-    return db('restaurants').insert(body);
-    
+async function add(body) {
+    const [id] = await db("restaurants").insert(body, "id" ); 
 }
 
 function update(id, body) {

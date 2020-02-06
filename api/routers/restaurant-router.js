@@ -47,9 +47,8 @@ router.post('/', verifyToken, (req, res) => {
     restModel.add(req.body)
         .then(rest => {
 
-            console.log(req.body, 'req body');
-            console.log(req.body.rows, 'rows');
-            console.log(rest, 'rest');
+            console.log(req.body)
+            
             const keys = Object.keys(req.body);
 
             if(keys.includes('name') && keys.includes('hours') && keys.includes('address')) {
