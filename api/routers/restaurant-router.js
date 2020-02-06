@@ -46,6 +46,7 @@ router.get('/:id', verifyToken, (req, res) => {
 router.post('/', verifyToken, (req, res) => {
 
     let lastObject;
+    console.log(lastObject)
 
     restModel.add(req.body)
         .then(rest => {
