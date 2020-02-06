@@ -59,7 +59,8 @@ router.post('/', verifyToken, (req, res) => {
 
             if(keys.includes('name') && keys.includes('hours') && keys.includes('address')) {
                 res.status(201).json({
-                    message: `Restaurant has been created`
+                    message: `Restaurant has been created`,
+                    test: lastObject
                 });
             }
         })
