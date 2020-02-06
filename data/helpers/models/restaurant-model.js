@@ -16,8 +16,10 @@ function findById(id) {
     return db('restaurants').where('id', id);
 }
 
- function add(id, body) {
-    return db('restaurants').insert(body).select('id', id);
+ function add(body) {
+    return db('restaurants')
+    .select('restaurants.id')
+    .insert(body);
     
 }
 
