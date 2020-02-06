@@ -20,7 +20,7 @@ module.exports = {
     useNullAsDefault: true
   },
 
-  test: {
+  testing: {
     client: "pg",
     connection: {
       host: process.env.PGHOST,
