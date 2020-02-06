@@ -46,8 +46,12 @@ router.get('/:id', verifyToken, (req, res) => {
 router.post('/', verifyToken, (req, res) => {
     restModel.add(req.body)
         .then(rest => {
-
-            console.log(req.body)
+            restModel.find()
+            .then(findrestaurant => {
+                findrestaurant.map(item => {
+                    console.log(item)
+                })
+            })
             
             const keys = Object.keys(req.body);
 
