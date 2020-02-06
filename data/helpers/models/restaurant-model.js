@@ -17,8 +17,7 @@ function findById(id) {
 }
 
 function add(body) {
-    const id = select(SCOPE_IDENTITY())
-    return db("restaurants").insert(body, id); 
+    return db("restaurants").insert(body); 
 }
 
 function update(id, body) {
