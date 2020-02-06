@@ -20,9 +20,9 @@ exports.up = function(knex) {
         tbl.integer("user_id", 255).notNullable().references('id').inTable("users").onDelete("CASCADE").onUpdate("CASCADE");
         tbl.integer("restaurant_id", 255).notNullable().references('id').inTable("restaurants").onDelete("CASCADE").onUpdate("CASCADE");
         tbl.text("review_disc").notNullable();
-        tbl.integer('price_rating');
-        tbl.integer('service_rating');
-        tbl.integer('food_rating');
+        tbl.float('price_rating');
+        tbl.float('service_rating');
+        tbl.float('food_rating');
         tbl.boolean('eat_again');
       })
 
