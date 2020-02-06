@@ -41,11 +41,10 @@ router.post("/register", (req, res) => {
 
 router.post("/login", validateLogin, (req, res) => {
   const token = generateToken(req.body);
-  const userID = req_req_id;
   res.status(200).json({
-    welcomeMessage: `Logged in as (${req.req_id}) ${req.body.username}.`,
+    welcomeMessage: `Logged in as ${req.body.username}.`,
     token: token,
-    userID: userID
+    userID: req.req_id
   });
 });
 
