@@ -23,14 +23,12 @@ module.exports = {
   testing: {
     client: "pg",
     connection: {
-      host: process.env.PGHOST,
-      port: process.env.PGPORT,
-      database: process.env.PGDATABASE,
-      user: process.env.PGUSER,
-      password: process.env.PGPASSWORD,
-      ssl: process.env.PGSSL
+      host: process.env.PGTEST,
+      port: process.env.PGTESTPORT,
+      database: process.env.PGTESTDATABASE,
+      user: process.env.PGTESTUSER,
+      password: process.env.PGTESTPASSWORD 
     },
-
     migrations: {
       directory: "./data/migrations"
     },
