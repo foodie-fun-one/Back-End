@@ -17,9 +17,7 @@ function findById(id) {
 }
 
  function add(body) {
-    return db('restaurants')
-    .select('restaurants.id')
-    .insert(body);
+    return db('restaurants').insert(body);
     
 }
 
