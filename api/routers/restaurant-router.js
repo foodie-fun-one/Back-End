@@ -51,8 +51,9 @@ router.post('/', verifyToken, (req, res) => {
                 findrestaurant.map(items => {
                     const resToArray = [];
                     resToArray.push(items);
-                    let lastObject = resToArray.length - 1;
-                    console.log(lastObject)
+                    let resKeys = Object.keys(resToArray);
+                    let last = keys[resKeys.length - 1];
+                    console.log(resToArray[last])
                 })
             })
             
