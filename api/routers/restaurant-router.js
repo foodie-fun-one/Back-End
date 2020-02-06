@@ -50,7 +50,7 @@ router.post('/', verifyToken, (req, res) => {
             .then(findrestaurant => {
                 findrestaurant.map(items => {
                     const resToArray = [];
-                    resToArray.push(items);
+                    items.push(resToArray);
                     console.log(resToArray);
                     let resKeys = Object.keys(resToArray);
                     let last = keys[resKeys.length - 1];
