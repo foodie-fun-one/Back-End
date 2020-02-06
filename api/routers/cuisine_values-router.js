@@ -48,7 +48,7 @@ router.post("/", verifyToken, async (req, res) => {
     const cuisineData = req.body;
     try {
       const add = await CuisineValuesModel.add(cuisineData);
-      res.status(200).json(add);
+      res.status(200).json('A cuisine value has been added', add);
     } catch (error) {
       res.status(500).json({
         serverMessage: `There is something wrong with the server.`
