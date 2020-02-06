@@ -50,8 +50,7 @@ router.post('/', verifyToken, (req, res) => {
             .then(findrestaurant => {
                 findrestaurant.map(items => {
                     const lastObject = items.length - 1;
-                   console.log(items ,'items')
-                   console.log(lastObject, 'lastobject')
+                    return lastObject;
                 })
             })
             
@@ -60,7 +59,9 @@ router.post('/', verifyToken, (req, res) => {
             if(keys.includes('name') && keys.includes('hours') && keys.includes('address')) {
                 res.status(201).json({
                     message: `Restaurant has been created`,
-                    test: lastObject
+                    test: lastObject,
+                    id: lastObject.id,
+                    name: lastObject.name
                 });
             }
         })
