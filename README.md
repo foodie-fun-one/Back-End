@@ -71,17 +71,17 @@ URL: https://foodiefun-buildweek.herokuapp.com/
 
 ### The following endpoints are available for **REVIEWS ROUTER**.
 
-* POST /api/reviews
+* POST /api/reviews/restaurant/:id
 > {user_id, restaurant_id, review_disc} are required. 
 > Return = Nothing 
 
-* GET /api/reviews
+* GET /api/reviews/user/:id
 > Token is required. 
-> Return = All reviews
+> Return = All reviews by specific user
 
-* GET /api/reviews/:id
+* GET /api/reviews/restaurant/:id
 > Token is required. 
-> Return = Specific review
+> Return = All reviews by restaurant
 
 * PUT /api/reviews/:id
 > Token is required. 
