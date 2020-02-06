@@ -48,7 +48,7 @@ router.post('/', verifyToken, (req, res) => {
         .then(rest => {
 
             console.log(req.body, 'req body');
-            console.log(req.body.rows.id, 'id');
+            console.log(req.body.rows, 'rows');
             console.log(rest, 'rest');
             const keys = Object.keys(req.body);
 
