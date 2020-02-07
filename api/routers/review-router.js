@@ -56,9 +56,11 @@ router.get("/restaurant/:id", (req, res) => {
 // async combo
 
 router.get("/combo/:id", async (req, res) => {
-  const userId = req.params.id;
+
+    const { id } = req.params;
+
   try {
-    const users = usersModel.findById(userId);
+    const getUserID = await db('users').where({id}).first()
     const reviews = await db("users")
       .select(
         "users.id",
@@ -73,13 +75,18 @@ router.get("/combo/:id", async (req, res) => {
       .from("reviews")
       .join("restaurants", "restaurants.id", "=", "reviews.restaurant_id")
       .join("users", "reviews.user_id", "=", "users.id")
-      .where("users.id", users)
+      .where("users.id", '=', getUserID.id)
       .limit(1);
     res.status(200).json(reviews);
   } catch (error) {
     console.log(error);
   }
 });
+
+function findById(id) {
+    return db('users')
+    .where({ id }).first();
+}
 
 //add a review
 router.post("/restaurant/:id", (req, res) => {
