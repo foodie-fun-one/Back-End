@@ -50,18 +50,6 @@ router.post("/", verifyToken, (req, res) => {
   restModel
     .add(req.body)
     .then(rest => {
-        function getRestInfo() {
-            restModel.find()
-            .then(findrestaurant => {
-                findrestaurant.map(items => {
-                     lastObject = items.length - 1;
-                     return lastObject;
-                })
-            })
-        }
-
-      console.log(getRestInfo());
-
       const keys = Object.keys(req.body);
 
       if (

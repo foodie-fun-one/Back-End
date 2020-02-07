@@ -33,6 +33,21 @@ router.get('/restaurant/:id', (req, res) => {
         })
 })
 
+
+// find combo
+
+router.get('/combo/:id', (req, res) => {
+    reviewModel.findReviewForUser(req.params.id)
+    .then(comboing => {
+        res.status(200).json(comboing)
+    })
+    .catch(err => {
+        res.status(500).json({
+            errorMessage: "An error occured while attempting to get this reviews combo."
+        })
+    })
+})
+
 //add a review
 router.post('/restaurant/:id', (req, res) => {
     req.body.restaurant_id = req.params.id;
