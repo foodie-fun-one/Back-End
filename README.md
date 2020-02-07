@@ -89,6 +89,10 @@ URL: https://foodiefun-buildweek.herokuapp.com/
 * DELETE /api/reviews/:id
 > Token is required. 
 
+* GET /api/reviews/combo/:id
+> Return = All reviews + restaurants for a specific user.
+> Token is required.
+
 ***
 
 
