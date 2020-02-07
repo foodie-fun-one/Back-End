@@ -39,19 +39,6 @@ router.get("/restaurant/:id", (req, res) => {
     });
 });
 
-// find combo
-
-// router.get('/combo/:id', (req, res) => {
-//     reviewModel.combo(req.params.id)
-//     .then(comboing => {
-//         res.status(200).json(comboing)
-//     })
-//     .catch(err => {
-//         res.status(500).json({
-//             errorMessage: "An error occured while attempting to get this reviews combo."
-//         })
-//     })
-// })
 
 // async combo
 
@@ -81,11 +68,6 @@ router.get("/combo/:id", async (req, res) => {
     console.log(error);
   }
 });
-
-function findById(id) {
-    return db('users')
-    .where({ id }).first();
-}
 
 //add a review
 router.post("/restaurant/:id", (req, res) => {
