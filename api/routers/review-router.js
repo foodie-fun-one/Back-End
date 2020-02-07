@@ -53,15 +53,13 @@ router.get('/restaurant/:id', (req, res) => {
 // async combo
 
 router.get('/combo/:id', async (req, res) => {
-    usersModel.findById(req.params.id)
-    try {
-          let getReviews = await db('users')
-            .select('users.id', 'reviews.restaurant_id', 'restaurants.name', 'reviews.review_disc', 'reviews.food_rating', 'reviews.price_rating', 'reviews.service_rating', 'reviews.eat_again')
-            .from('reviews')
-            .join('restaurants', 'restaurants.id', '=', 'reviews.restaurant_id')
-            .join('users', 'reviews.user_id', '=', 'users.id')
-            .where('users.id', req.req_id)   
-            res.status(200).json(getReviews)
+   
+    const userId = req.params.id;
+
+    try {  
+        const users = await usersModel.findById(userId)
+        res.status(200).json(users)
+
     }
     catch (error) {
         console.log(error)
