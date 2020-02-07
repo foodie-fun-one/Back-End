@@ -39,7 +39,7 @@ router.get('/restaurant/:id', (req, res) => {
 router.get('/combo/:id', (req, res) => {
     reviewModel.combo(req.params.id)
     .then(comboing => {
-        res.status(200).json(comboing[0])
+        res.status(200).json(comboing).first()
     })
     .catch(err => {
         res.status(500).json({
