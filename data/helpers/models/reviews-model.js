@@ -8,7 +8,8 @@ module.exports = {
   update,
   remove,
   find,
-  combo
+  combo,
+  comboTwo
 };
 
 function find(id) {
@@ -53,9 +54,21 @@ function remove(id) {
 
 function combo(id) {
     return db('users')
-    .select(id, 'reviews.restaurant_id', 'restaurants.name', 'reviews.review_disc', 'reviews.food_rating', 'reviews.price_rating', 'reviews.service_rating', 'reviews.eat_again')
+    .select('users.id', 'reviews.restaurant_id', 'restaurants.name', 'reviews.review_disc', 'reviews.food_rating', 'reviews.price_rating', 'reviews.service_rating', 'reviews.eat_again')
     .from('reviews')
     .join('restaurants', 'restaurants.id', '=', 'reviews.restaurant_id')
     .join('users', 'reviews.user_id', '=', id)
     .where('users.id', id)
+}
+
+function comboTwo(id) {
+    return db.raw(
+        `
+        SELECT users.id, reviews.restaurant_id, restaurants.name, reviews.review_disc, reviews.food_rating, reviews.price_rating, reviews.service_rating, reviews.eat_again
+        FROM reviews
+        JOIN restaurants on restaurants.id = reviews.restaurant_id
+        JOIN users on reviews.user_id = users.id
+        WHERE users.id = ${id}
+        `
+    )
 }
