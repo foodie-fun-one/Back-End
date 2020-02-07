@@ -1,4 +1,5 @@
 const db = require("../../../data/dbConfig"); // dbconfig connects with knexfile
+const { findById }  = require('./user-model');
 
 module.exports = {
   findByUser,
@@ -48,10 +49,10 @@ function remove(id) {
 // }
 
 function combo(id) {
+    findById(id);
     return db('reviews')
-    .where('id', id)
     .from('reviews')
-    .select(id, 'restaurants.id', 'reviews.restaurant_id', 'restaurants.name', 'reviews.review_disc', 'reviews.food_rating', 'reviews.price_rating', 'reviews.service_rating', 'reviews.eat_again')
+    .select('users.id', 'restaurants.id', 'reviews.restaurant_id', 'restaurants.name', 'reviews.review_disc', 'reviews.food_rating', 'reviews.price_rating', 'reviews.service_rating', 'reviews.eat_again')
     .join('users', 'reviews.user_id', '=', id)
     .join('restaurants', 'reviews.restaurant_id', '=', 'restaurants.id')
 }
