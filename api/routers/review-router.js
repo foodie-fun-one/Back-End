@@ -51,7 +51,7 @@ router.get('/combo/:id', (req, res) => {
 router.get('/comboTwo/:id', (req, res) => {
     reviewModel.comboTwo(req.params.id)
     .then(comboing => {
-        res.status(200).json(comboing[0])
+        res.status(200).json(comboing)
     })
     .catch(err => {
         res.status(500).json({
