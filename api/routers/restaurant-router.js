@@ -45,25 +45,26 @@ router.get('/:id', verifyToken, (req, res) => {
 //add restaurant
 router.post('/', verifyToken, (req, res) => {
 
-    let lastObject;
-    console.log(lastObject)
 
     restModel.add(req.body)
         .then(rest => {
             restModel.find()
             .then(findrestaurant => {
+                let lastObject;
                 findrestaurant.map(items => {
-                    lastObject = items.length - 1;
+                     lastObject = items.length - 1;
                     return lastObject;
                 })
+
+                console.log(lastObject)
             })
             
             const keys = Object.keys(req.body);
 
             if(keys.includes('name') && keys.includes('hours') && keys.includes('address')) {
                 res.status(201).json({
-                    message: `Restaurant has been created`,
-                    lastObject
+                    message: `Restaurant has been created`
+                    
                 });
             }
         })
