@@ -62,7 +62,7 @@ function combo(id) {
 }
 
 function comboTwo(id) {
-    return db.raw(
+    return db.users.raw(
         `
         SELECT users.id, reviews.restaurant_id, restaurants.name, reviews.review_disc, reviews.food_rating, reviews.price_rating, reviews.service_rating, reviews.eat_again
         FROM reviews
