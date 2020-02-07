@@ -37,7 +37,7 @@ router.get('/restaurant/:id', (req, res) => {
 // find combo
 
 router.get('/combo/:id', (req, res) => {
-    reviewModel.findReviewForUser(req.params.id)
+    reviewModel.combo(req.params.id)
     .then(comboing => {
         res.status(200).json(comboing)
     })
