@@ -75,8 +75,7 @@ router.get("/combo/:id", async (req, res) => {
       .from("reviews")
       .join("restaurants", "restaurants.id", "=", "reviews.restaurant_id")
       .join("users", "reviews.user_id", "=", "users.id")
-      .where("users.id", '=', getUserID.id)
-      .limit(1);
+      .where("users.id", getUserID.id)
     res.status(200).json(reviews);
   } catch (error) {
     console.log(error);
