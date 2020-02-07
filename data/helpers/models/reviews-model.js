@@ -53,8 +53,9 @@ function remove(id) {
 
 function combo(id) {
     return db('users')
-    .where('id', id)
-    .select('reviews.restaurant_id', 'restaurants.name', 'reviews.review_disc', 'reviews.food_rating', 'reviews.price_rating', 'reviews.service_rating', 'reviews.eat_again')
+    .select('users.id', 'reviews.restaurant_id', 'restaurants.name', 'reviews.review_disc', 'reviews.food_rating', 'reviews.price_rating', 'reviews.service_rating', 'reviews.eat_again')
     .from('reviews')
     .join('restaurants', 'restaurants.id', '=', 'reviews.restaurant_id')
+    .join('users', 'reviews.user_id', '=', 'users.id')
+    .where('users.id', id)
 }
