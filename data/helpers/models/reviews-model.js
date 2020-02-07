@@ -43,7 +43,7 @@ function remove(id) {
 function combo(id) {
     return db.raw(
         `
-        SELECT ${id} as USER, restaurants.id as RestaurantID, reviews.restaurant_id as ReviewRestaurantID, restaurants.name, reviews.review_disc, reviews.food_rating, reviews.price_rating, reviews.service_rating, reviews.eat_again
+        SELECT restaurants.id as RestaurantID, reviews.restaurant_id as ReviewRestaurantID, restaurants.name, reviews.review_disc, reviews.food_rating, reviews.price_rating, reviews.service_rating, reviews.eat_again
         FROM reviews
         JOIN users on reviews.user_id = ${id}
         JOIN restaurants on reviews.restaurant_id = restaurants.id
