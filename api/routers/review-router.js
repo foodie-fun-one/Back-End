@@ -60,7 +60,7 @@ router.get('/combo/:id', async (req, res) => {
             .from('reviews')
             .join('restaurants', 'restaurants.id', '=', 'reviews.restaurant_id')
             .join('users', 'reviews.user_id', '=', 'users.id')
-            .where('users.id', userFound)   
+            .where('users.id', req.req_id)   
             res.status(200).json(getReviews)
     }
     catch (error) {
