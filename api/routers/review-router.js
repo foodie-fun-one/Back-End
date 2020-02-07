@@ -24,7 +24,7 @@ router.get('/user/:id', (req, res) => {
 router.get('/restaurant/:id', (req, res) => {
     reviewModel.findByRest(req.params.id)
         .then(rest => {
-            res.status(200).json(rest);
+            res.status(200).json(rest[0]);
         })
         .catch(err => {
             res.status(500).json({
