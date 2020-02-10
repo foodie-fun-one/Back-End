@@ -10,10 +10,10 @@ exports.up = function(knex) {
 
     .createTable("restaurants", tbl => {
         tbl.increments();
-        tbl.string("name", 255).notNullable();
+        tbl.string("name", 255).notNullable().unique();
         tbl.string("address", 255).notNullable();
         tbl.string("hours", 128).notNullable();
-      })
+      })//
 
       .createTable("reviews", tbl => {
         tbl.increments();

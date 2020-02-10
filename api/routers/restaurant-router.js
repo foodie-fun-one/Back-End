@@ -8,12 +8,13 @@ const router = express.Router();
 router.use(express.json());
 
 //get all restaurants
-router.get('/', verifyToken, (req, res) => {
+router.get('/', (req, res) => {
     restModel.find()
         .then(rest => {
             res.status(200).json(rest)
         })
         .catch(err => {
+            console.log(err)
             res.status(500).json({
                 errorMessage: "An error has occured attempting to retrieve a list of restaurants."
             })
@@ -43,7 +44,7 @@ router.get('/:id', verifyToken, (req, res) => {
 })
 
 //add restaurant
-router.post('/', verifyToken, (req, res) => {
+router.post('/', (req, res) => {
     restModel.add(req.body)
         .then(rest => {
             const keys = Object.keys(req.body);
@@ -61,7 +62,7 @@ router.post('/', verifyToken, (req, res) => {
 })
 
 //update restaurant
-router.put('/:id', verifyToken, (req, res) => {
+router.put('/:id', (req, res) => {
     restModel.update(req.params.id, req.body)
         .then(rest => {
             restModel.findById(req.params.id)
